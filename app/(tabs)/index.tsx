@@ -1,98 +1,51 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React, { useState, useCallback } from 'react';
+import { View, StyleSheet, SafeAreaView } from 'react-native';
+import DeveloperCard from '@/components/DeveloperCard';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
-
+// --- ANA BİLEŞEN: App (Mantık / Container Component) ---
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  // BEST PRACTICE: Uygulamanın/Bileşenin "Single Source of Truth" (Tek Doğru Kaynağı) için
+  // stateler parent katmanında tutulur ve çocuklara prop olarak aktarılır.
+  const [musaitMi, setMusaitMi] = useState(true);
+  const [aclikSeviyesi, setAclikSeviyesi] = useState(60); // 0 (Tok) ile 100 (Çok Aç) arası
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  // BEST PRACTICE: Alt bileşenlere prop olarak geçirilen metotlar useCallback ile sarmalandı.
+  // Bu, metot referansının her render'da yeniden oluşturulmasını engelleyerek performansı optimize eder.
+  const handleToggleMusaitlik = useCallback(() => {
+    setMusaitMi((prev) => !prev);
+  }, []);
+
+  const handleYemekYe = useCallback(() => {
+    setAclikSeviyesi((prev) => Math.max(0, prev - 25)); // Her tetiklemede 25 doygunluk artar, en az 0'a iner
+  }, []);
+
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <DeveloperCard 
+          ad="Bahri Talha Baş"
+          uzmanlik="React Native"
+          seviye="Senior"
+          musaitMi={musaitMi}
+          aclikSeviyesi={aclikSeviyesi}
+          onToggleMusaitlik={handleToggleMusaitlik}
+          onYemekYe={handleYemekYe}
+        />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#F8FAFC', // Modern, göz yormayan soğuk beyaz/gri (Slate-50)
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  container: {
+    flex: 1,
+    justifyContent: 'center', // Flexbox: Dikeyde tam merkeziyet
+    alignItems: 'center',     // Flexbox: Yatayda tam merkeziyet
+    padding: 24,
+    backgroundColor: '#F8FAFC', 
   },
 });
