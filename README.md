@@ -132,7 +132,6 @@ const styles = StyleSheet.create({
 ## 2. Ekran Görüntüsü
 
 ![Uygulama Ekran Görüntüsü](./assets/images/screenshot.png) 
-*(Lütfen kendi çektiğiniz ekran görüntüsünü bu isimle `assets/images` klasörüne ekleyin veya hocanıza doğrudan dosyayı atın)*
 
 ---
 
