@@ -1,4 +1,7 @@
+apk linki : https://expo.dev/artifacts/eas/a7woaReYZA6awfhkWgM3PQ.apk
+
 # 🐾 NanoPet: Modern Tamagotchi Deneyimi
+
 
 NanoPet, klasik evcil hayvan bakımı konseptini modern mobil oyun dinamikleriyle birleştiren, React Native ve Expo ile geliştirilmiş kapsamlı bir simülasyon uygulamasıdır. Kullanıcıların dijital bir dostu büyütürken sorumluluk almalarını ve eğlenceli mini oyunlarla etkileşimde kalmalarını hedefler.
 
