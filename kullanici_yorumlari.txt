@@ -2,15 +2,15 @@ NanoPet: Kullanıcı Deneyimi ve Geri Bildirimler
 
 Projemiz üzerinde yapılan testler sonucunda farklı profillerdeki kullanıcılardan gelen yorumlar aşağıda özetlenmiştir:
 
-1. Selin Y. (Mobil Tasarımcı)
+1. Furkan Keskin
 ---------------------------
 "NanoPet'in arayüzü gerçekten çok akıcı ve kullanıcıyı içine çekiyor. Özellikle petimize dokunduğumuzda ortaya çıkan kalp animasyonları ve doğru zamanda gelen haptic (titreşim) geri bildirimler, etkileşimi çok daha gerçekçi kılmış. Ejderha evriminin detayları ve animasyonları tek kelimeyle harika!"
 
-2. Mert K. (Oyun Tutkunu)
+2. Hafsa Çataklo
 ------------------------
 "Klasik bir Tamagotchi oyununda mini oyunların bu kadar çeşitli olması şaşırtıcı. Özellikle Magic Piano mini oyunu favorim oldu. Oyunlardan altın biriktirip marketten yeni aksesuarlar ve skinler almak oyuna çok güzel bir derinlik katmış. Petin zıplama hareketi ve dinamik kirlenme efektleri çok samimi hissettiriyor."
 
-3. Caner B. (Yazılım Geliştirici)
+3. Mehmet Akif Özgür
 -------------------------------
 "Kirlenme sisteminin rastgele değil de hijyen seviyesine göre kademeli (toz, çamur ve sinekler) olması teknik anlamda çok etkileyici bir detay. Uygulamanın performansı ve geçişlerin hızı kusursuz. Özellikle React Native ile bu kadar akıcı animasyonlar yakalanmış olması projenin ne kadar temiz kodlandığını kanıtlıyor."
 
